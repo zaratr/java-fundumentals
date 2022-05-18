@@ -18,6 +18,7 @@ public class Library {
         int dicer = r.nextInt((10 - 1) + 1) + 1;//just to test, change this value
         int [] value = roll(dicer);
         boolean truthy=containsDuplicates(new int[]{3,4,5,1});
+        int average = rowAverage(new int[]{2,3,4,5});
         average(weeklyMonthTemperatures);
         return true;
     }
