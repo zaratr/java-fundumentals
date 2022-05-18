@@ -3,12 +3,17 @@
  */
 package linter;
 
+import java.util.HashSet;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
+
+    public static void main(String[] args)
+    {
+        new App().run();
+    }
+    public String run() {
+        return "test";
     }
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
-    }
+
 }
