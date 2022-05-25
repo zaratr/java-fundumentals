@@ -17,6 +17,7 @@ public class Library {
         return true;
     }
 
+
     public static int[] roll (int n) {
         int[] newArray = new int[n];
         Random num = new Random();

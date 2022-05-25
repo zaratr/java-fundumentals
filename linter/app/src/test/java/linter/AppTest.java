@@ -6,6 +6,7 @@ package linter;
 import org.junit.jupiter.api.Test;
 
 
+
 class AppTest {
     @Test void testCheckSemiColonReturnsClean() {
         App sut = new App();
