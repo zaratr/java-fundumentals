@@ -25,10 +25,12 @@ class LibraryTest {
     public void testZeroAdd()
     {
         Review aReview = new Review("stuff", "Rman", 2);
-        Restaurant sut = new Restaurant("$$", "mcDonald", 3);
-        Shop sut1 = new Shop("$$", "7-11", 3);
-        Theater sut2 = new Theater("$$", "AMC", 5);
+        Restaurant sut = new Restaurant();
+        Shop sut1 = new Shop();
+        Theater sut2 = new Theater();
         sut.addReview(aReview);
+        sut1.addReview(aReview);
+        sut2.addReview(aReview);
         assert(sut.restReviews.size()== 1);
         assert(sut1.restReviews.size()== 1);
         assert(sut2.restReviews.size()== 1);
@@ -44,7 +46,10 @@ class LibraryTest {
     @Test void testingReview() {
         Restaurant SaltGrass = new Restaurant("$", "Salt Grass", 5);
         Review sut = new Review("hello", "Jason Wilson", 5, SaltGrass);
-            assertEquals("Salt Grass $ reviewed by: Jason Wilson \nhello \n", sut.toString());
+        String finalWord = sut.toString();
+        String checker = "Salt Grass $ reviewed by: Jason Wilson \nhello \n";
+        int x = finalWord.compareTo(checker);
+            assertEquals(checker, sut.toString());
         return;
     }
     @Test void testingAddReview(){
@@ -84,6 +89,8 @@ class LibraryTest {
         }
         Review movieReview = new Review("was good!", "raul",4, sut, "spiderman");
         String finalWord = movieReview.toString();
+        String checker = "Harkins $ reviewed by: raul \nwas good! \nmovie reviewed: spiderman" ;
+        assertEquals(checker, finalWord);
         return;
 
     }

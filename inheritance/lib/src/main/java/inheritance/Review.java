@@ -27,14 +27,21 @@ public class Review {
         this.event = SaltGrass;
         this.clientMovie = reviewedMovie;
     }
+    public void updateStars(int newStars)
+    {
+        this.stars = newStars;
 
+    }
 
     @Override
     public String toString() {
         String ptr = "";
-        if(event instanceof Theater) ptr = ((Theater)event).findMovieReviewed(clientMovie);
-        if(event == null)
+        if(event instanceof Theater)
+        {
+            ptr = ((Theater)event).findMovieReviewed(clientMovie);
+            return event.name + " " + event.priceCategory + " reviewed by: " + author + " \n" + body + " \n" + "movie reviewed: " + ptr;
+        }
+        else
             return event.name + " " + event.priceCategory + " reviewed by: " + author + " \n" + body + " \n";
-        return event.name + " " + event.priceCategory + " reviewed by: " + author + " \n" + body + " \n" + "movie reviewed: " + ptr;
     }
 }
