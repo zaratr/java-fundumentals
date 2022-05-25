@@ -13,25 +13,80 @@ class LibraryTest {
     }
     @Test void testingZero(){
         Restaurant McDonalds = new Restaurant();
+        Shop corner = new Shop();
+        Theater movies = new Theater();
         assertTrue(McDonalds.name == "");
+        assertTrue(corner.name == "");
+        assertTrue(movies.name == "");
+
         return;
+    }
+    @Test
+    public void testZeroAdd()
+    {
+        Review aReview = new Review("stuff", "Rman", 2);
+        Restaurant sut = new Restaurant("$$", "mcDonald", 3);
+        Shop sut1 = new Shop("$$", "7-11", 3);
+        Theater sut2 = new Theater("$$", "AMC", 5);
+        sut.addReview(aReview);
+        assert(sut.restReviews.size()== 1);
+        assert(sut1.restReviews.size()== 1);
+        assert(sut2.restReviews.size()== 1);
     }
     @Test void testingToString(){
         Restaurant PizzaHut = new Restaurant ("$", "Pizza Hut", 1);
+        Shop sut1 = new Shop ("$", "7-11", 1);
+        Theater sut2 = new Theater ("$", "AMC", 1);
         assertTrue(PizzaHut.toString() != null);
+        assertTrue(sut1.toString() != null);
+        assertTrue(sut2.toString() != null);
     }
     @Test void testingReview() {
         Restaurant SaltGrass = new Restaurant("$", "Salt Grass", 5);
         Review sut = new Review("hello", "Jason Wilson", 5, SaltGrass);
-//        assertTrue(sut.toString() == "Restaurant: " + "SaltGrass" + " has a rating of " + 5 + " and a price category of " + "$");
-//        assertTrue(sut.toString() == SaltGrass + " " + SaltGrass.priceCategory + " reviewed by: " + "Jason Wilson" + " \n" + "this radio maintenance with a radio test, how copy?" + " \n");
             assertEquals("Salt Grass $ reviewed by: Jason Wilson \nhello \n", sut.toString());
         return;
     }
     @Test void testingAddReview(){
-        Restaurant addReviewVar = new Restaurant("hello", "Jason Wilson", 5);
+        Event addReviewVar = new Restaurant("$$$", "Harkins", 5);
+        Event sut = new Shop("$$", "7-11", 3);
+        Event sut2 = new Theater("$", "Harkins", 4);
+
         addReviewVar.addReview(new Review("is..pimping", "Raul", 4, addReviewVar));
-        assertTrue(addReviewVar.restReviews.size() == 1);  // TODO: How to use contains?
+        sut.addReview(new Review("is..pimping", "Raul", 4, addReviewVar));
+        sut2.addReview(new Review("is..pimping", "Raul", 4, addReviewVar));
+
+        assertTrue(addReviewVar.hasReview(new Review("is..pimping", "Raul", 4, addReviewVar)));
+        assertTrue(sut.hasReview(new Review("is..pimping", "Raul", 4, sut)));
+        assertTrue(sut2.hasReview(new Review("is..pimping", "Raul", 4, sut2)));
         return;
     }
+    @Test
+    public void testDownCast()
+    {
+        Event mcDonalds = new Restaurant("$", "McDonald", 5);
+        Event cornerStore = new Shop("$$", "7-11", 5);
+        assert(mcDonalds instanceof Restaurant);
+        assert(cornerStore instanceof Shop);
+
+        return;
+    }
+
+    @Test
+    public void testTheaterMovieReview()
+    {
+        Event sut = new Theater("$", "Harkins", 4);
+        if(sut instanceof Theater) {
+            ((Theater) sut).addMovie("spiderman");
+            ((Theater) sut).addMovie("catwomen");
+            ((Theater) sut).addMovie("aquaman");
+            ((Theater) sut).addMovie("batman");
+        }
+        Review movieReview = new Review("was good!", "raul",4, sut, "spiderman");
+        String finalWord = movieReview.toString();
+        return;
+
+    }
+
+
 }

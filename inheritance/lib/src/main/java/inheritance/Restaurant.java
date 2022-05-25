@@ -3,25 +3,16 @@ package inheritance;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class Restaurant {
-    public int restStars;
-    public String name;
-    public String priceCategory;
-    public HashSet<Review> restReviews;
+public class Restaurant extends Event{
 
     public Restaurant() {
-        this.priceCategory = "";
-        this.name = "";
-        this.restStars = 0;
-        this.restReviews = new HashSet<Review>();
+        super();
     }
 
     public Restaurant (String priceCategory, String name, int restStars) {
-        this.priceCategory = priceCategory;
-        this.name = name;
-        this.restStars = restStars;
-
-
+        super(priceCategory,
+                name,
+                restStars);
     }
 
     @Override
@@ -31,8 +22,9 @@ public class Restaurant {
     }
 
     public void addReview(Review aReview) {
-        restReviews = new HashSet<>();
+        if(restReviews == null) {restReviews = new HashSet<>();}
         restReviews.add(aReview);
     }
+
 
 }
