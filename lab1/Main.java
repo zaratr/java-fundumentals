@@ -20,6 +20,9 @@ public class Main{
         int turtleCount = 0;
         System.out.println("I own " + turtleCount + " " + pluralize("turtle", turtleCount) + ".");
 
+        pluralize("dog", 1);
+        clock();
+
     }
     public String pluralize(String arg, int animal)
     {
